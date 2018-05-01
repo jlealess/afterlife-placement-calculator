@@ -1,0 +1,32 @@
+Point scoring system
+- add / subtract
+- multiply based on times? --> multiple choice or slider?
+- Outcomes: Good Place (>0), Bad Place(<0), Medium Place (0)
+
+Font: Brandon Grotesque is close enough
+https://typekit.com/fonts/brandon-grotesque
+
+Link to scoring explanation:
+https://www.youtube.com/watch?v=ut0ai4s4mjU
+
+Questions:
+1. Are you vegan? 
+    1a. Have you ever talked about it
+
+2. Have you ever murdered anyone?
+    2a. Directly or indirectly?
+
+3. Gave out full-size candy bars at Halloween
+
+4. Held door for person behind you
+    4a. # of times?
+
+5. Have you ever stiffed a waitress
+
+6. Have you ever told a woman to smile
+
+7. Have you ever failed to disclose a camel's illness while selling a camel
+
+8. Have you ever used "Facebook" as a verb
+
+
