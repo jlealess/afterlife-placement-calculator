@@ -4,12 +4,12 @@ $(function() {
     let score = 0;
 
     // hide child questions on load
-    $(".child").hide();
-    $(".parent button").hide();
+    // $(".child").hide();
+    // $(".parent button").hide();
 
 
     // event handler for forms with radio input
-    $('form.radio').on('change', function(e) {
+    $('.form__radio').on('change', function(e) {
         e.preventDefault();
 
         const $answer = $(this).find('input:checked');
@@ -17,8 +17,7 @@ $(function() {
 
         if(answerValue.length > 0) {
             const answerPointValue = Number($answer.data("pointvalue"));
-            score += answerPointValue;
-            $scoreboard.text(score.toFixed(2));
+            updateScore(answerPointValue)
             
             if($answer.data("showchild")) {
                 $("form").next().show();
@@ -33,6 +32,19 @@ $(function() {
     //     //console.log("clickity click!");
     //     $(this).next("form:not[.child]").show();
     // })
+
+    const updateScore = function(delta) {
+        score += delta;
+        $scoreboard.removeClass("good bad");
+
+        if(score > 0) {
+            $scoreboard.addClass("good");
+        } else if (score < 0) {
+            $scoreboard.addClass("bad");
+        } 
+        $scoreboard.text(score.toFixed(2));
+
+    }
 
     
 })

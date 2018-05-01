@@ -12,3 +12,30 @@ body {
 form {
     
 }
+
+h1, h2, h3, h4, h5, h6, p {
+    margin-bottom: .75rem;
+}
+
+.bad {
+    color: $bad;
+}
+
+.good {
+    color: $good;
+}
+
+.scoreboard {
+    font-size: 3rem;
+}
+
+.welcome {
+    color: $main-green;
+    text-align: center;
+
+    &__heading {
+        &__subheading {
+            display: block;
+        }
+    }
+}

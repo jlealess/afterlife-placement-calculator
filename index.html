@@ -12,7 +12,11 @@
 
 <body>
     <div class="wrapper">
-    <form action="" method="POST" id="form1" class="radio parent">
+        <section class="welcome row">
+            <h1 class="heading heading--extra-large welcome__heading">Welcome! <span class="welcome__heading__subheading">Everything is fine!</span></h1>
+            <p class="welcome__text">(For now)</p>
+        </section>
+    <form action="" method="POST" id="form1" class="form form__radio form__parent">
         <p class="question">Are you vegan?</p>
         <label for="q1Yes">Yes</label>
         <input type="radio" name="q1" id="q1Yes" value="yes" data-pointvalue="432.04" data-showchild="true">
@@ -20,15 +24,15 @@
         <input type="radio" name="q1" id="q1No" value="no" data-pointvalue="-1.56">
         <button>Next question</button>
     </form>
-    <form action="" method="POST" id="form1a" class="radio child">
-        <p class="question">Have you ever discussed veganism unprompted?</p>
+    <form action="" method="POST" id="form1a" class="form form__radio form__child">
+        <p class="form__question">Have you ever discussed veganism unprompted?</p>
         <label for="q1aYes">Yes</label>
         <input type="radio" name="q1a" id="q1aYes" value="yes" data-pointvalue="0">
         <label for="q1aNo">No</label>
         <input type="radio" name="q1a" id="q1aNo" value="no" data-pointvalue="9885.55">
         <button>Next question</button>
     </form>
-    <form action="" method="POST" id="form2" class="radio">
+    <form action="" method="POST" id="form2" class="form form__radio">
         <p class="question">Have you ended slavery?</p>
         <label for="q2Yes">Yes</label>
         <input type="radio" name="q2" id="q2Yes" value="yes" data-pointvalue="814292.09">
