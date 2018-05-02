@@ -7,44 +7,116 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://use.typekit.net/sza6wtx.css">      
     <link rel="stylesheet" href="styles/styles.css">
-    <title>The Good Place Evaluator</title>
+    <title>Afterlife Placement Calculator</title>
 </head>
 
 <body>
     <div class="wrapper">
+
+
         <section class="welcome row">
             <h1 class="heading heading--extra-large welcome__heading">Welcome! <span class="welcome__heading__subheading">Everything is fine!</span></h1>
             <p class="welcome__text">(For now)</p>
         </section>
+    <div id="scoreboard" class="scoreboard">
+    
+    </div>
     <form action="" method="POST" id="form1" class="form form__radio form__parent">
         <p class="question">Are you vegan?</p>
-        <label for="q1Yes">Yes</label>
-        <input type="radio" name="q1" id="q1Yes" value="yes" data-pointvalue="432.04" data-showchild="true">
-        <label for="q1No">No</label>
-        <input type="radio" name="q1" id="q1No" value="no" data-pointvalue="-1.56">
+        <div>
+            <input type="radio" name="q1" id="q1Yes" value="yes" data-pointvalue="432.04" data-showchild="true">
+            <label for="q1Yes">Yes</label>
+        </div>
+        <div>
+            <input type="radio" name="q1" id="q1No" value="no" data-pointvalue="-1.56" data-showchild="false">
+            <label for="q1No">No</label>
+        </div>
         <button>Next question</button>
     </form>
     <form action="" method="POST" id="form1a" class="form form__radio form__child">
         <p class="form__question">Have you ever discussed veganism unprompted?</p>
-        <label for="q1aYes">Yes</label>
-        <input type="radio" name="q1a" id="q1aYes" value="yes" data-pointvalue="0">
-        <label for="q1aNo">No</label>
-        <input type="radio" name="q1a" id="q1aNo" value="no" data-pointvalue="9885.55">
+        <div>
+            <input type="radio" name="q1a" id="q1aYes" value="yes" data-pointvalue="0">
+            <label for="q1aYes">Yes</label>
+        </div>
+        <div>
+            <input type="radio" name="q1a" id="q1aNo" value="no" data-pointvalue="9885.55">
+            <label for="q1aNo">No</label>
+        </div>
         <button>Next question</button>
     </form>
     <form action="" method="POST" id="form2" class="form form__radio">
         <p class="question">Have you ended slavery?</p>
-        <label for="q2Yes">Yes</label>
-        <input type="radio" name="q2" id="q2Yes" value="yes" data-pointvalue="814292.09">
-        <label for="q2No">No</label>
-        <input type="radio" name="q2" id="q2No" value="no" data-pointvalue="0">
+        <div>
+            <input type="radio" name="q2" id="q2Yes" value="yes" data-pointvalue="814292.09">
+            <label for="q2Yes">Yes</label>
+        </div>
+        <div>
+            <input type="radio" name="q2" id="q2No" value="no" data-pointvalue="0">
+            <label for="q2No">No</label>
+        </div>
         <button>Next question</button>
     </form>
+    <form action="" method="POST" id="form5" class="form form__checkbox">
+        <p class="question">Have you ever (check all that apply):</p>
+        <label>
+            <input type="checkbox" name="form5Options" value="smile" data-pointvalue="-53.83" /> Told a woman to smile</label>
+        <label>
+            <input type="checkbox" name="form5Options" value="hawt" data-pointvalue="-6.98" /> Spelled the word "hot" as "hawt"</label>
+        <label>
+            <input type="checkbox" name="form5Options" value="gurlz" data-pointvalue="-7.22" /> Spell the word "girls" as "gurlz"</label>
+        <label>
+            <input type="checkbox" name="form5Options" value="bro-code" data-pointvalue="-8.20" /> Use the term "bro-code"</label>
+        <label>
+            <input type="checkbox" name="form5Options" value="facebook" data-pointvalue="-5.55" /> Use "Facebook" as a verb</label>
+    
+        <button>Next question</button>
+    </form>
+    <form action="" method="POST" id="form3" class="form form__checkbox">
+        <p class="question">Have you ever committed any of the following acts: (check all that apply)</p>
+            <label>
+                <input type="checkbox" name="form3Options" value="pitbull-rehab" data-pointvalue="491.34" /> Rehabilitated a pit bull</label>
+            <label>
+                <input type="checkbox" name="form3Options" value="camel-illness" data-pointvalue="-22.22" /> Failed to disclose camel-illness when selling camel</label>
+            <label>
+                <input type="checkbox" name="form3Options" value="stiff-waitress" data-pointvalue="-6.83" /> Stiffed a waitress</label>
 
-    <div id="scoreboard" class="scoreboard">
+        <button>Next question</button>
+    </form>
+    <form action="" method="POST" id="form4" class="form form__radio form__parent">
+        <p class="question">Have you ever committed murder?</p>
+        <div>
+            <input type="radio" name="q4" id="q4Yes" value="yes" data-pointvalue="0" data-showchild="true">
+            <label for="q1Yes">Yes</label>
+        </div>
+        <div>
+            <input type="radio" name="q4" id="q4No" value="no" data-pointvalue="0" data-showchild="false">
+            <label for="q4No">No</label>
+        </div>
+        <button>Next question</button>
+    </form>
+    <form action="" method="POST" id="form4a" class="form form__radio form__child">
+        <p class="form__question">Did you:</p>
+        <div>
+            <input type="radio" name="q4a" id="q4aDirect" value="direct" data-pointvalue="-12532.00">
+            <label for="q4aDirect">Directly murder someone</label>
+        </div>
+        <div>
+            <input type="radio" name="q4a" id="q4aIndirect" value="indirect" data-pointvalue="-12568.74">
+            <label for="q4aIndirect">Indirectly murder someone</label>
+        </div>
+        <div>
+            <input type="radio" name="q4a" id="q4aGenocide" value="genocide" data-pointvalue="-433115.25">
+            <label for="q4aGenocide">Commit mass genocide</label>
+        </div>
+        <button>Next question</button>
+    </form>
+    <button id="endQuiz">Tabulate</button>
+    <div id="finalResults">
 
     </div>
-        </div>
+
+    </div>
 
 
     <script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='
