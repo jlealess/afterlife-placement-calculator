@@ -3,7 +3,15 @@
     &__checkbox {
         label {
             display: block;
+            position: relative;
         }
+        input[type=checkbox] {
+            visibility: hidden;
+        }
+        svg {
+            margin: 0 1.5rem 0 -1.5rem;
+        }
+
     }
 
     button {

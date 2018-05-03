@@ -17,6 +17,19 @@ h1, h2, h3, h4, h5, h6, p {
     margin-bottom: .75rem;
 }
 
+button {
+    background-color: $main-green;
+    border: none;
+    border-radius: 3rem;
+    color: $white;
+    display: block;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 2rem auto 2rem;
+    padding: 1rem 8rem;
+    text-transform: uppercase;
+}
+
 .bad {
     color: $bad;
 }

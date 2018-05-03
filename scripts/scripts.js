@@ -1,3 +1,30 @@
+const pathToImages = "images/"
+const results = {
+    bad: {
+        headline: "The Bad Place",
+        images: [
+            'ah-shirt.gif'
+        ],
+        message: "Well, you forked up. You're a mess, morally speaking. You’re a putrid, disgusting bowl of ethical soup. All aboard the 3:18 train to the Bad Place, making thousands of stops for literally no reason. The dining car is at the very back of the train. It serves only room-temperature Manhattan clam chowder, and also, it’s closed."
+    },
+    good: {
+        headline: "The Good Place",
+        images: [
+            'shirtballs.gif'
+        ],
+        message: "You did it! You’re more perfect than perfect. (Any place or thing in the universe can be up to 104% perfect. That's how you get Beyoncé.) Welcome to the Good Place. You know the way you feel when you see a picture of two otters holding hands? That's how you’re gonna feel every day."
+    },
+    medium: {
+        headline: "The Medium Place",
+        images: [
+            'medium-place.gif'
+        ],
+        message: "Look. you might not have been a saint, but it's not like you killed anybody. You weren’t an arsonist. You never found a wallet outside of an IHOP and thought about returning it but saw the owner lived out of state so just took the cash and dropped the wallet back on the ground. You’re a medium person. You get to spend eternity in a medium place. Like Cincinnati."
+    }
+    
+}
+
+
 $(function() {
     // global variables
     const $scoreboard = $("#scoreboard");
@@ -48,6 +75,7 @@ $(function() {
     });
 
     $('.form__checkbox input').on('change', function() {
+        $(this).next('svg').toggleClass('fa-circle fa-check-circle');
             const answerPointValue = $(this).data("pointvalue");
             const isChecked = $(this).is(':checked');
 
@@ -69,6 +97,9 @@ $(function() {
     // })
 
     const updateScore = function(delta) {
+        // updateVerdictMessage("");
+        // updateVerdictImage("");
+        // updateVerdictHeadline("");
         updateVerdict("");
         score += Number(delta);
         (score === 0 ? $scoreboard.text(score) : $scoreboard.text(score.toFixed(2)));
@@ -81,24 +112,38 @@ $(function() {
         } 
     }
 
-    const updateVerdict = function(update) {
-        const $resultDisplay = $("#finalResults");
-        $resultDisplay.text(update);
+    const updateVerdict = function(status) {
+        const $resultMessage = $("#resultMessage");
+        const $resultImage = $("#resultImage");
+        const $resultHeadline = $("#resultHeadline");
+        
+        if (status === "") {
+            $resultMessage.empty();
+            $resultImage.empty();
+            $resultHeadline.empty();
+        } else {            
+            const headline = results[status].headline;
+            const img = results[status].images[0];
+            const verdict = results[status].message;
+    
+            $resultMessage.html(`<p>${verdict}</p>`);
+            $resultImage.html(`<img src="${pathToImages}${img}" />`);
+            $resultHeadline.html(`<h2>${headline}</h2>`);
+        }
     }
 
     const tabulateVerdict = function() {
-        let verdict;
+        let status;
 
         if(score > 100) {
-             verdict = `You did it! You're more perfect than perfect. (Any place or thing in the universe can be up to 104% perfect. That's how you get Beyoncé.) Welcome to the Good Place. You know the way you feel when you see a picture of two otters holding hands? That's how you're gonna feel every day.`;
+            status = "good";
         } else if(score < -100) {
-            verdict = `Well, you forked up. You're a mess, morally speaking. You're a putrid, disgusting bowl of ethical soup. All aboard the 3:18 train to the Bad Place, making thousands of stops for literally no reason. The dining car is at the very back of the train. It serves only room-temperature Manhattan clam chowder, and also, it's closed.`;
+            status = "bad";
         } else {
-            verdict = `Look. you might not have been a saint, but it's not like you killed anybody. You weren't an arsonist. You never found a wallet outside of an IHOP and thought about returning it but saw the owner lived out of state so just took the cash and dropped the wallet back on the ground. You're a medium person. You get to spend eternity in a medium place. Like Cincinatti.`;
+            status = "medium";
         }
 
-        updateVerdict(verdict);
-        
+        updateVerdict(status);
     }
 
     
