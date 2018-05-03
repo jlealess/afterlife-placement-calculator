@@ -5,8 +5,9 @@ html {
 }
 
 body {
-    font-size: 2.4rem;
+    color: $black;
     font-family: $font-stack;
+    font-size: 3rem;
 }
 
 form {
@@ -47,10 +48,13 @@ button {
 }
 
 .welcome {
-    color: $main-green;
+    color: $white;
     text-align: center;
 
     &__heading {
+
+        margin-top: 0;
+
         &__subheading {
             display: block;
         }

@@ -23,22 +23,46 @@ const results = {
     }
     
 }
+const updateVerdict = function (status) {
+    const $resultMessage = $("#resultMessage");
+    const $resultImage = $("#resultImage");
+    const $resultHeadline = $("#resultHeadline");
+
+
+    const headline = results[status].headline;
+    const img = results[status].images[0];
+    const verdict = results[status].message;
+
+    $resultMessage.html(`<p>${verdict}</p>`);
+    $resultImage.html(`<img src="${pathToImages}${img}" />`);
+    $resultHeadline.html(`<h2>${headline}</h2>`);
+}
 
 
 $(function() {
     // global variables
-    const $scoreboard = $("#scoreboard");
+    const $scoreboard = $("#scoreboard .wrapper");
+    const $scoreDisplay = $("#currentScore");
     let score = 0;
 
     // add storedpoints data element to all forms
     $("form").data("storedpoints", "");
 
     // hide child questions on load
+    $("#endQuiz").hide();
+    $(".form").hide();
     $(".form__child").hide();
+    //$("form:not(.form__child) .next").hide();
+    $(".next").hide();
+    //$(".form__child .next").show();
 
-    // event handler for forms with radio input
-    $('.form__radio input').on('change', function(e) {
-        e.preventDefault();
+    $("#start").on("click", function() {
+        $(".welcome").fadeOut();
+        $("form:first-of-type").fadeIn();
+    })
+
+   // event handler for forms with radio input
+    $('input[type=radio]').on('change', function() {
 
         const $answer = $(this);
         const answerValue = $answer.val();  
@@ -56,28 +80,35 @@ $(function() {
         if (parentForm.hasClass("form__parent")) {
             const childForm = $(this).closest("form").next(".form__child");
             const childStatus = $(this).data("showchild");
+
             if(childStatus === true) {
+                // case: child question is relevant
                 childForm.show();
             } else if(childStatus === false) {
+                // case: child question is not relevant
                 childForm[0].reset();
                 let childStoredPoints = childForm.data("storedpoints");                
                 if (childStoredPoints !== "") {
                     let childStoredPointsNum = Number(childStoredPoints);
                     updateScore(childStoredPointsNum * -1);
-                    childForm.data("storedpoints", "");
+                    childForm.data("storedpoints", ""); 
+                    parentForm.find(".next").hide();  
                 }
-
                 childForm.hide();
+                parentForm.find(".next").fadeIn();
             }
+        } else {
+            parentForm.find(".next").fadeIn();
         }
-
-
     });
 
-    $('.form__checkbox input').on('change', function() {
+    // event handler for checkboxes
+    $('input[type=checkbox]').on('change', function() {
         $(this).next('svg').toggleClass('fa-circle fa-check-circle');
+
             const answerPointValue = $(this).data("pointvalue");
             const isChecked = $(this).is(':checked');
+            $(this).closest("form").find(".next").fadeIn();
 
             if (isChecked) {
                 updateScore(answerPointValue);
@@ -86,50 +117,41 @@ $(function() {
             }
     });
 
+
+
     $("#endQuiz").on("click", function() {
+        $("form").hide();
+        $(this).hide();
         tabulateVerdict();
     });
 
-    // $('button').on("click", function(e) {
-    //     e.preventDefault();
-    //     //console.log("clickity click!");
-    //     $(this).next("form:not[.child]").show();
-    // })
+    $('button.next').on("click", function(e) {
+        e.preventDefault();
+        //console.log("clickity click!");
+        $("form").hide();
+        let nextForm = $(this).parents().next("form");
+        if (nextForm.hasClass("form__child")) {
+            nextForm = nextForm.next("form");
+        }
+        nextForm.fadeIn();
+        //$(this).closest("form").show();
+    })
 
-    const updateScore = function(delta) {
-        // updateVerdictMessage("");
-        // updateVerdictImage("");
-        // updateVerdictHeadline("");
-        updateVerdict("");
-        score += Number(delta);
-        (score === 0 ? $scoreboard.text(score) : $scoreboard.text(score.toFixed(2)));
-        
-        $scoreboard.removeClass("good bad");
-        if(score > 0) {
-            $scoreboard.addClass("good");
-        } else if (score < 0) {
-            $scoreboard.addClass("bad");
-        } 
+    const clearVerdict = function() {
+        $(".result").empty();
     }
 
-    const updateVerdict = function(status) {
-        const $resultMessage = $("#resultMessage");
-        const $resultImage = $("#resultImage");
-        const $resultHeadline = $("#resultHeadline");
+    const updateScore = function(delta) {
+        clearVerdict();
+        score += Number(delta);
+        (score === 0 ? $scoreDisplay.text(score) : $scoreDisplay.text(score.toFixed(2)));
         
-        if (status === "") {
-            $resultMessage.empty();
-            $resultImage.empty();
-            $resultHeadline.empty();
-        } else {            
-            const headline = results[status].headline;
-            const img = results[status].images[0];
-            const verdict = results[status].message;
-    
-            $resultMessage.html(`<p>${verdict}</p>`);
-            $resultImage.html(`<img src="${pathToImages}${img}" />`);
-            $resultHeadline.html(`<h2>${headline}</h2>`);
-        }
+        $scoreDisplay.removeClass("good bad");
+        if(score > 0) {
+            $scoreDisplay.addClass("good");
+        } else if (score < 0) {
+            $scoreDisplay.addClass("bad");
+        } 
     }
 
     const tabulateVerdict = function() {
@@ -142,9 +164,7 @@ $(function() {
         } else {
             status = "medium";
         }
-
         updateVerdict(status);
     }
-
-    
+  
 })

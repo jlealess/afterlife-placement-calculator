@@ -1,0 +1,20 @@
+body {
+    background-color: snow;
+}
+
+main, 
+.welcome {
+    min-height: 100vh;
+}
+
+main {
+    border: 3rem solid $main-green;
+}
+
+.welcome {
+    background-color: $main-green;
+    color: $white;
+    display: grid;
+    align-items: center;
+}
+
