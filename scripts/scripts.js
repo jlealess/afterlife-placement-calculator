@@ -33,7 +33,7 @@ const updateVerdict = function (status) {
     const img = results[status].images[0];
     const verdict = results[status].message;
 
-    $resultMessage.html(`<p>${verdict}</p>`);
+    $resultMessage.html(`<p class="paragraph paragraph__center">${verdict}</p>`);
     $resultImage.html(`<img src="${pathToImages}${img}" />`);
     $resultHeadline.html(`<h2>${headline}</h2>`);
 }
@@ -48,12 +48,14 @@ $(function() {
     // add storedpoints data element to all forms
     $("form").data("storedpoints", "");
 
-    // hide child questions on load
+    // hide elements on load
+    $("main").hide();
     $("#endQuiz").hide();
     $(".form").hide();
     $("#intro").hide();
     $(".next").hide();
     $("#scoreboard").hide();
+    $("#play").hide();
     //$(".form__child .next").show();
 
 
@@ -134,8 +136,10 @@ $(function() {
     })
 
     $('#start').on('click', function () {
-        $('.welcome').fadeOut();
+        $('.welcome').hide();
+        $('main').show();
         $('#intro').fadeIn();
+        $('#play').fadeIn();
     })
     
     $('#play').on('click', function() {

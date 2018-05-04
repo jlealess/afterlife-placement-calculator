@@ -18,25 +18,42 @@ h1, h2, h3, h4, h5, h6, p {
     margin-bottom: .75rem;
 }
 
-button {
+.bad {
+    color: $bad;
+}
+
+.button {
     background-color: $main-green;
     border: none;
     border-radius: 3rem;
     color: $white;
     display: block;
     font-weight: 600;
+    font-size: 2.5rem;
     letter-spacing: 1px;
     margin: 2rem auto 2rem;
     padding: 1rem 8rem;
     text-transform: uppercase;
-}
+    transition: all 0.5s ease-in-out;
 
-.bad {
-    color: $bad;
+    &__reverse {
+        background-color: $white;
+        color: $main-green;
+
+        &:hover {
+            box-shadow: 0 3px 3px $black;
+        }
+    }
 }
 
 .good {
     color: $good;
+}
+
+.paragraph {
+    &__center {
+        text-align: center;
+    }
 }
 
 .question {
