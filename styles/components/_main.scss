@@ -1,20 +1,17 @@
 body {
     background-color: snow;
 }
-
-main, 
-.welcome {
-    min-height: 100vh;
-}
+header,
+main {}
 
 main {
     border: 3rem solid $main-green;
 }
 
 .welcome {
+    align-items: center;
     background-color: $main-green;
     color: $white;
     display: grid;
-    align-items: center;
 }
 

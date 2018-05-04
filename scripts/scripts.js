@@ -51,15 +51,11 @@ $(function() {
     // hide child questions on load
     $("#endQuiz").hide();
     $(".form").hide();
-    $(".form__child").hide();
-    //$("form:not(.form__child) .next").hide();
+    $("#intro").hide();
     $(".next").hide();
+    $("#scoreboard").hide();
     //$(".form__child .next").show();
 
-    $("#start").on("click", function() {
-        $(".welcome").fadeOut();
-        $("form:first-of-type").fadeIn();
-    })
 
    // event handler for forms with radio input
     $('input[type=radio]').on('change', function() {
@@ -125,7 +121,7 @@ $(function() {
         tabulateVerdict();
     });
 
-    $('button.next').on("click", function(e) {
+    $('.next').on("click", function(e) {
         e.preventDefault();
         //console.log("clickity click!");
         $("form").hide();
@@ -135,6 +131,17 @@ $(function() {
         }
         nextForm.fadeIn();
         //$(this).closest("form").show();
+    })
+
+    $('#start').on('click', function () {
+        $('.welcome').fadeOut();
+        $('#intro').fadeIn();
+    })
+    
+    $('#play').on('click', function() {
+        $('#intro').hide();
+        $('#scoreboard').fadeIn();
+        $('form:first-of-type').fadeIn();
     })
 
     const clearVerdict = function() {
