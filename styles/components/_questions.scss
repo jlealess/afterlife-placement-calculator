@@ -1,21 +1,71 @@
 .form {
+    text-align: center;
+
+    .answer {
+        display: inline-block;
+        margin: 1.5rem auto;
+        text-align: left;
+
+        &__block {
+
+            label {
+                display: block;
+            }
+        }
+    }
+
+    .question {
+        span {
+            display: block;
+            font-size: 80%;
+            font-weight: 400;
+        }
+    }
 
     &__checkbox {
         label {
-            display: block;
             position: relative;
         }
         input[type=checkbox] {
             visibility: hidden;
         }
+
         svg {
             margin: 0 1.5rem 0 -1.5rem;
         }
 
     }
 
-    // button {
-    //     display: none;
-    // }
+    input[type=radio] {
+        visibility: hidden;
+        width: 1px;
+        left: -9999px;
+
+        &+label,
+        &:checked+label {
+            background-repeat: no-repeat;
+            background-size: 1em;
+            background-position-y: center;
+            background-position-x: left;
+        }
+
+        &+label {
+            background-image: url(../images/unchecked.svg);
+            padding-left: 1.75em;
+        }
+
+        &:checked+label {
+            background-image: url(../images/checked.svg);
+            color: $main-green;
+        }
+    }
+
+    .selected {
+        color: $main-green;
+
+        svg {
+            color: $black;
+        }
+    }
 
 }

@@ -1,4 +1,10 @@
-const pathToImages = "images/"
+// global variables
+const $scoreDisplay = $("#currentScore");
+let score = 0;
+
+
+const pathToImages = "images/";
+const pathToQuiz = "";
 const results = {
     bad: {
         headline: "The Bad Place",
@@ -23,11 +29,11 @@ const results = {
     }
     
 }
-const updateVerdict = function (status) {
-    const $resultMessage = $("#resultMessage");
-    const $resultImage = $("#resultImage");
-    const $resultHeadline = $("#resultHeadline");
 
+const updateVerdict = function (status) {
+    const $resultMessage = $('#resultMessage');
+    const $resultImage = $('#resultImage');
+    const $resultHeadline = $('#resultHeadline');
 
     const headline = results[status].headline;
     const img = results[status].images[0];
@@ -35,29 +41,35 @@ const updateVerdict = function (status) {
 
     $resultMessage.html(`<p class="paragraph paragraph__center">${verdict}</p>`);
     $resultImage.html(`<img src="${pathToImages}${img}" />`);
-    $resultHeadline.html(`<h2>${headline}</h2>`);
+    $resultHeadline.html(`<h2 class="heading"><span class="heading__subhead">Your destination: </span>${headline}</h2>`);
+    $('.results').addClass('animated fadeInUp').fadeIn();
+    $('footer').fadeIn();
+    $('main').toggleClass('has-background');
+
+    populateTweeter(status);
+
+}
+
+const populateTweeter = function (status) {
+    status = status.charAt(0).toUpperCase() + status.substr(1);
+    $('#tweeter a').attr('href', `https://twitter.com/intent/tweet?text=I just ended up in the ${status} Place in the Afterlife Placement Calculator. Find out where you're going at ${pathToQuiz}`);
 }
 
 
 $(function() {
-    // global variables
-    const $scoreboard = $("#scoreboard .wrapper");
-    const $scoreDisplay = $("#currentScore");
-    let score = 0;
 
     // add storedpoints data element to all forms
-    $("form").data("storedpoints", "");
+    $('.form').data("storedpoints", "");
 
     // hide elements on load
-    $("main").hide();
-    $("#endQuiz").hide();
-    $(".form").hide();
-    $("#intro").hide();
-    $(".next").hide();
-    $("#scoreboard").hide();
-    $("#play").hide();
-    //$(".form__child .next").show();
-
+    $('main').hide();
+    $('.end-quiz').hide();
+    $('.form').hide();
+    $('#intro').hide();
+    $('.next').hide();
+    $('#scoreboard').hide();
+    $('#play').hide();
+    $('.results').hide();
 
    // event handler for forms with radio input
     $('input[type=radio]').on('change', function() {
@@ -82,6 +94,7 @@ $(function() {
             if(childStatus === true) {
                 // case: child question is relevant
                 childForm.show();
+                parentForm.find(".next").hide();  
             } else if(childStatus === false) {
                 // case: child question is not relevant
                 childForm[0].reset();
@@ -90,23 +103,24 @@ $(function() {
                     let childStoredPointsNum = Number(childStoredPoints);
                     updateScore(childStoredPointsNum * -1);
                     childForm.data("storedpoints", ""); 
-                    parentForm.find(".next").hide();  
+                    parentForm.find(".button").hide();  
                 }
                 childForm.hide();
-                parentForm.find(".next").fadeIn();
+                parentForm.find(".button").addClass('animated fadeInUp').fadeIn();
             }
         } else {
-            parentForm.find(".next").fadeIn();
+            parentForm.find(".button").addClass('animated fadeInUp').fadeIn();
         }
     });
 
     // event handler for checkboxes
     $('input[type=checkbox]').on('change', function() {
+        $(this).parent().toggleClass('selected');
         $(this).next('svg').toggleClass('fa-circle fa-check-circle');
 
             const answerPointValue = $(this).data("pointvalue");
             const isChecked = $(this).is(':checked');
-            $(this).closest("form").find(".next").fadeIn();
+            $(this).closest("form").find(".button").fadeIn();
 
             if (isChecked) {
                 updateScore(answerPointValue);
@@ -115,37 +129,40 @@ $(function() {
             }
     });
 
-
-
-    $("#endQuiz").on("click", function() {
+    $(".end-quiz").on("click", function(e) {
+        e.preventDefault();
         $("form").hide();
         $(this).hide();
+        $('#currentScoreLabel').text("Final score");
         tabulateVerdict();
     });
 
     $('.next').on("click", function(e) {
         e.preventDefault();
-        //console.log("clickity click!");
         $("form").hide();
         let nextForm = $(this).parents().next("form");
         if (nextForm.hasClass("form__child")) {
             nextForm = nextForm.next("form");
-        }
+        } 
         nextForm.fadeIn();
-        //$(this).closest("form").show();
+        if (nextForm.hasClass('form__checkbox')) {
+            nextForm.find(".button").fadeIn();
+        }    
     })
 
     $('#start').on('click', function () {
         $('.welcome').hide();
         $('main').show();
         $('#intro').fadeIn();
-        $('#play').fadeIn();
+        $('#play').addClass('animated fadeInUp').fadeIn();
+        $('footer').hide();
     })
     
     $('#play').on('click', function() {
         $('#intro').hide();
         $('#scoreboard').fadeIn();
         $('form:first-of-type').fadeIn();
+        $('main').toggleClass('has-background');
     })
 
     const clearVerdict = function() {
