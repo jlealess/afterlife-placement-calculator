@@ -2,7 +2,7 @@
 const $scoreDisplay = $('#currentScore');
 let score = 0;
 const pathToImages = 'images/';
-const pathToQuiz = '';
+const pathToQuiz = 'http://jackielealess.com/afterlife-placement-calculator';
 const results = {
     bad: {
         headline: "The Bad Place",
@@ -50,7 +50,7 @@ const updateVerdict = function (status) {
 
 const populateTweeter = function (status) {
     status = status.charAt(0).toUpperCase() + status.substr(1);
-    $('#tweeter a').attr('href', `https://twitter.com/intent/tweet?text=I just ended up in the ${status} Place in the Afterlife Placement Calculator. Find out where you're going at ${pathToQuiz}`);
+    $('#tweeter a').attr('href', `https://twitter.com/intent/tweet?text=Holy shirtballs! I'm headed for the ${status} Place via the Afterlife Placement Calculator. Check your destination at ${pathToQuiz}`);
 }
 
 const clearVerdict = function () {
