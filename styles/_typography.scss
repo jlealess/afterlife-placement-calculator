@@ -51,7 +51,10 @@ h1, h2, h3, h4, h5, h6, p {
     transition: $transition;
 
     &:hover {
-        opacity: 0.5;
+        background-color: #4aa95a;
+        background-image: none;
+        color: transparentize($white, 0.1);
+
     }
 
     @media screen and (max-width: 799px) {
@@ -72,6 +75,12 @@ h1, h2, h3, h4, h5, h6, p {
         background-color: $white;
         background-image: none;
         color: $main-green;
+
+        &:hover {
+            background-color: transparentize($white, 0.1);
+            background-image: none;
+            color: #4aa95a;
+        }
     }
 
     .next,
