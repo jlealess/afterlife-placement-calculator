@@ -40,7 +40,7 @@ const updateVerdict = function (status) {
     $resultMessage.html(`<p class="paragraph paragraph__center">${verdict}</p>`);
     $resultImage.html(`<img src="${pathToImages}${img}" />`);
     $resultHeadline.html(`<h2 class="heading"><span class="heading__subhead">Your destination: </span>${headline}</h2>`);
-    $('.results').addClass('animated fadeInUp').fadeIn();
+    $('.results').fadeIn();
     $('footer').fadeIn();
     $('main').toggleClass('has-background');
 
