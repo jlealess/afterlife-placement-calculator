@@ -1,8 +1,8 @@
 // global variables
-const $scoreDisplay = $("#currentScore");
+const $scoreDisplay = $('#currentScore');
 let score = 0;
-const pathToImages = "images/";
-const pathToQuiz = "";
+const pathToImages = 'images/';
+const pathToQuiz = '';
 const results = {
     bad: {
         headline: "The Bad Place",
@@ -54,7 +54,7 @@ const populateTweeter = function (status) {
 }
 
 const clearVerdict = function () {
-    $(".result").empty();
+    $('.result').empty();
 }
 
 const updateScore = function (delta) {
@@ -62,11 +62,11 @@ const updateScore = function (delta) {
     score += Number(delta);
     (score === 0 ? $scoreDisplay.text(score) : $scoreDisplay.text(score.toFixed(2)));
 
-    $scoreDisplay.removeClass("good bad");
+    $scoreDisplay.removeClass('good bad');
     if (score > 0) {
-        $scoreDisplay.addClass("good");
+        $scoreDisplay.addClass('good');
     } else if (score < 0) {
-        $scoreDisplay.addClass("bad");
+        $scoreDisplay.addClass('bad');
     }
 }
 
@@ -74,11 +74,11 @@ const tabulateVerdict = function () {
     let status;
 
     if (score > 100) {
-        status = "good";
+        status = 'good';
     } else if (score < -100) {
-        status = "bad";
+        status = 'bad';
     } else {
-        status = "medium";
+        status = 'medium';
     }
     updateVerdict(status);
 }
@@ -86,7 +86,7 @@ const tabulateVerdict = function () {
 $(function() {
 
     // add storedpoints data element to all forms
-    $('.form').data("storedpoints", "");
+    $('.form').data('storedpoints', "");
 
     // hide elements on load
     $('main').hide();
@@ -103,40 +103,40 @@ $(function() {
 
         const $answer = $(this);
         const answerValue = $answer.val();  
-        const answerPointValue = $answer.data("pointvalue");
-        const parentForm = $answer.closest("form");
+        const answerPointValue = $answer.data('pointvalue');
+        const parentForm = $answer.closest('form');
 
-        let storedPoints = parentForm.data("storedpoints");
+        let storedPoints = parentForm.data('storedpoints');
         if(storedPoints !== "") {
             let storedPointsNum = Number(storedPoints);
             updateScore(storedPointsNum * -1);            
         }
-        parentForm.data("storedpoints", answerPointValue);
+        parentForm.data('storedpoints', answerPointValue);
         updateScore(answerPointValue);
 
-        if (parentForm.hasClass("form__parent")) {
-            const childForm = $(this).closest("form").next(".form__child");
-            const childStatus = $(this).data("showchild");
+        if (parentForm.hasClass('form__parent')) {
+            const childForm = $(this).closest('form').next('.form__child');
+            const childStatus = $(this).data('showchild');
 
             if(childStatus === true) {
                 // case: child question is relevant
                 childForm.show();
-                parentForm.find(".next").hide();  
+                parentForm.find('.next').hide();  
             } else if(childStatus === false) {
                 // case: child question is not relevant
                 childForm[0].reset();
-                let childStoredPoints = childForm.data("storedpoints");                
+                let childStoredPoints = childForm.data('storedpoints');                
                 if (childStoredPoints !== "") {
                     let childStoredPointsNum = Number(childStoredPoints);
                     updateScore(childStoredPointsNum * -1);
-                    childForm.data("storedpoints", ""); 
-                    parentForm.find(".button").hide();  
+                    childForm.data('storedpoints', ""); 
+                    parentForm.find('.button').hide();  
                 }
                 childForm.hide();
-                parentForm.find(".button").addClass('animated fadeInUp').fadeIn();
+                parentForm.find('.button').addClass('animated fadeInUp').fadeIn();
             }
         } else {
-            parentForm.find(".button").addClass('animated fadeInUp').fadeIn();
+            parentForm.find('.button').addClass('animated fadeInUp').fadeIn();
         }
     });
 
@@ -147,7 +147,7 @@ $(function() {
 
             const answerPointValue = $(this).data("pointvalue");
             const isChecked = $(this).is(':checked');
-            $(this).closest("form").find(".button").fadeIn();
+            $(this).closest('form').find('.button').fadeIn();
 
             if (isChecked) {
                 updateScore(answerPointValue);
@@ -156,24 +156,24 @@ $(function() {
             }
     });
 
-    $(".end-quiz").on("click", function(e) {
+    $('.end-quiz').on('click', function(e) {
         e.preventDefault();
-        $("form").hide();
+        $('form').hide();
         $(this).hide();
-        $('#currentScoreLabel').text("Final score");
+        $('#currentScoreLabel').text('Final score');
         tabulateVerdict();
     });
 
     $('.next').on("click", function(e) {
         e.preventDefault();
-        $("form").hide();
-        let nextForm = $(this).parents().next("form");
-        if (nextForm.hasClass("form__child")) {
-            nextForm = nextForm.next("form");
+        $('form').hide();
+        let nextForm = $(this).parents().next('form');
+        if (nextForm.hasClass('form__child')) {
+            nextForm = nextForm.next('form');
         } 
         nextForm.fadeIn();
         if (nextForm.hasClass('form__checkbox')) {
-            nextForm.find(".button").fadeIn();
+            nextForm.find('.button').fadeIn();
         }    
     })
 

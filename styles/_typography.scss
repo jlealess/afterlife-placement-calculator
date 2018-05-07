@@ -35,10 +35,6 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .button {
-    -webkit-animation-delay: $transition-delay;
-    -moz-animation-delay: $transition-delay;
-    -o-animation-delay: $transition-delay;
-    animation-delay: $transition-delay;
 
     background-color: $main-green;
     background-image: linear-gradient(to top, #499552, #4a9f56, #4aa95a, #4ab45f, #4abe63);
@@ -49,6 +45,14 @@ h1, h2, h3, h4, h5, h6, p {
     font-weight: 600;
     text-transform: uppercase;
     transition: $transition;
+
+    &--start,
+    &--play {
+        -webkit-animation-delay: $transition-delay;
+        -moz-animation-delay: $transition-delay;
+        -o-animation-delay: $transition-delay;
+        animation-delay: $transition-delay;
+    }
 
     &:hover {
         background-color: #4aa95a;
@@ -81,14 +85,6 @@ h1, h2, h3, h4, h5, h6, p {
             background-image: none;
             color: #4aa95a;
         }
-    }
-
-    .next,
-    .end-quiz {
-        -webkit-animation-delay: 0s;
-        -moz-animation-delay: 0s;
-        -o-animation-delay: 0s;
-        animation-delay: 0s;
     }
 }
 
