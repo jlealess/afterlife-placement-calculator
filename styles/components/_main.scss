@@ -42,11 +42,20 @@ main {
 
     &.has-background {
 
+        @media screen and (max-width: 1250px) {
+            background-size: 20%;
+        }
+
+        @media screen and (max-width: 1600px) {
+            background-size: 30%;
+        }
+
         @media screen and (min-width: 1000px) {
             background-image: url(../images/the-good-place-michael.png);
             background-repeat: no-repeat;
             background-position: bottom left;
         }
+
     }
 }
 
