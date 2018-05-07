@@ -1,8 +1,6 @@
 // global variables
 const $scoreDisplay = $("#currentScore");
 let score = 0;
-
-
 const pathToImages = "images/";
 const pathToQuiz = "";
 const results = {
@@ -55,6 +53,35 @@ const populateTweeter = function (status) {
     $('#tweeter a').attr('href', `https://twitter.com/intent/tweet?text=I just ended up in the ${status} Place in the Afterlife Placement Calculator. Find out where you're going at ${pathToQuiz}`);
 }
 
+const clearVerdict = function () {
+    $(".result").empty();
+}
+
+const updateScore = function (delta) {
+    clearVerdict();
+    score += Number(delta);
+    (score === 0 ? $scoreDisplay.text(score) : $scoreDisplay.text(score.toFixed(2)));
+
+    $scoreDisplay.removeClass("good bad");
+    if (score > 0) {
+        $scoreDisplay.addClass("good");
+    } else if (score < 0) {
+        $scoreDisplay.addClass("bad");
+    }
+}
+
+const tabulateVerdict = function () {
+    let status;
+
+    if (score > 100) {
+        status = "good";
+    } else if (score < -100) {
+        status = "bad";
+    } else {
+        status = "medium";
+    }
+    updateVerdict(status);
+}
 
 $(function() {
 
@@ -165,34 +192,5 @@ $(function() {
         $('main').toggleClass('has-background');
     })
 
-    const clearVerdict = function() {
-        $(".result").empty();
-    }
-
-    const updateScore = function(delta) {
-        clearVerdict();
-        score += Number(delta);
-        (score === 0 ? $scoreDisplay.text(score) : $scoreDisplay.text(score.toFixed(2)));
-        
-        $scoreDisplay.removeClass("good bad");
-        if(score > 0) {
-            $scoreDisplay.addClass("good");
-        } else if (score < 0) {
-            $scoreDisplay.addClass("bad");
-        } 
-    }
-
-    const tabulateVerdict = function() {
-        let status;
-
-        if(score > 100) {
-            status = "good";
-        } else if(score < -100) {
-            status = "bad";
-        } else {
-            status = "medium";
-        }
-        updateVerdict(status);
-    }
   
 })
