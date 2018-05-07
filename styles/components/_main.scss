@@ -9,19 +9,21 @@ main {
 
 footer {
     background-color: $main-green;
-    bottom: 0;
     color: $white;
-    display: flex;
     font-size: 1.4rem;
     font-weight: 700;
-    left: 0;
-
-    position: fixed;
     text-transform: uppercase;
-    width: 100%;
+    
     p {
         margin: 0 auto 5px;
         text-align: center;
+    }
+    
+    @media screen and (min-height: 100vh) {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        width: 100%;
     }
 }
 
@@ -31,13 +33,20 @@ header {
 
 main {
     border: 3rem solid $main-green;
-    padding: 50px;
+    padding: 20px;
     position: relative;
 
+    @media screen and (min-width: 600px) {
+        padding: 50px;    
+    }
+
     &.has-background {
-        background-image: url(../images/the-good-place-michael.png);
-        background-repeat: no-repeat;
-        background-position: bottom left;
+
+        @media screen and (min-width: 1000px) {
+            background-image: url(../images/the-good-place-michael.png);
+            background-repeat: no-repeat;
+            background-position: bottom left;
+        }
     }
 }
 
@@ -66,9 +75,19 @@ main {
     text-align: center;
 }
 
+.results {
+    img {
+        max-width: 100%;
+    }
+}
+
 .scoreboard {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     position: relative;
+
+    @media screen and (min-width: 600px) {
+        margin-bottom: 75px;
+    }
 
     &::after {
         border: 1px solid $main-green;

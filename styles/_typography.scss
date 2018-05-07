@@ -7,22 +7,23 @@ html {
 body {
     color: $black;
     font-family: $font-stack;
-    font-size: 2.5rem;
+    font-size: 2rem;
+
+    @media screen and (min-width: 800px) {
+        font-size: 2.5rem;
+    }
 }
 
 footer {
     a {
         color: #B2E1B8;
         text-decoration: none;
+
         &:hover {
             color: $white;
             text-decoration: underline;
         }
     }
-}
-
-form {
-    
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -34,7 +35,6 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .button {
-
     -webkit-animation-delay: $transition-delay;
     -moz-animation-delay: $transition-delay;
     -o-animation-delay: $transition-delay;
@@ -47,29 +47,39 @@ h1, h2, h3, h4, h5, h6, p {
     color: $white;
     display: block;
     font-weight: 600;
-    font-size: 2.5rem;
-    letter-spacing: 1px;
-    margin: 2rem auto 2rem;
-    padding: 1rem 8rem;
     text-transform: uppercase;
-    transition: all 0.5s ease-in-out;
+    transition: $transition;
 
-        &__reverse {
+    &:hover {
+        opacity: 0.5;
+    }
+
+    @media screen and (max-width: 799px) {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+        margin: 2rem auto 2rem;
+        padding: 1rem 4rem;
+    }
+    
+    @media screen and (min-width: 800px) {
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+        margin: 2rem auto 2rem;
+        padding: 1rem 8rem;
+    }
+
+    &__reverse {
         background-color: $white;
         background-image: none;
         color: $main-green;
+    }
 
-        &:hover {
-            box-shadow: 0 2px 1px rgba(0,0,0,0.5);
-        }
-
-        .next,
-        .end-quiz {
-            -webkit-animation-delay: 0s;
-            -moz-animation-delay: 0s;
-            -o-animation-delay: 0s;
-            animation-delay: 0s;
-        }
+    .next,
+    .end-quiz {
+        -webkit-animation-delay: 0s;
+        -moz-animation-delay: 0s;
+        -o-animation-delay: 0s;
+        animation-delay: 0s;
     }
 }
 
@@ -81,10 +91,6 @@ h1, h2, h3, h4, h5, h6, p {
         text-transform: uppercase;
         font-size: 2rem;
         font-weight: 700;
-    }
-
-    &__value {
-
     }
 }
 
@@ -109,10 +115,14 @@ h1, h2, h3, h4, h5, h6, p {
     .heading {
         margin: .5rem;
 
+        @media screen and (max-width: 800px) {
+            line-height: 1.2;
+            margin: 1rem 0;
+        }
+
         &__subhead {
             font-weight: 400;
         }
-
     }
 
     .paragraph {
@@ -137,10 +147,19 @@ h1, h2, h3, h4, h5, h6, p {
     text-align: center;
 
     &__heading {
-
+        font-size: 3rem;
         line-height: 1.3;
-        margin: 0 0 8rem;
-        font-size: 10rem;
+        margin: 0 0 2rem;
+        
+        @media screen and (min-width: 400px) {
+            font-size: 6rem;
+            margin: 0 0 4rem;
+        }
+        
+        @media screen and (min-width: 800px) {
+            font-size: 10rem;
+            margin: 0 0 8rem;
+        }
 
         &__subheading {
             display: block;

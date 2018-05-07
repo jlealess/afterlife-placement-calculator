@@ -1,6 +1,10 @@
 .form {
     text-align: center;
 
+    label {
+        margin-bottom: .8rem;
+    }
+
     .answer {
         display: inline-block;
         margin: 1.5rem auto;
@@ -25,7 +29,10 @@
     &__checkbox {
         label {
             position: relative;
+            padding-left: 5rem;
+            text-indent: -4rem;
         }
+
         input[type=checkbox] {
             visibility: hidden;
         }
@@ -37,9 +44,10 @@
     }
 
     input[type=radio] {
-        visibility: hidden;
-        width: 1px;
+        margin-bottom: 1rem;
         left: -9999px;
+        width: 1px;
+        visibility: hidden;
 
         &+label,
         &:checked+label {
