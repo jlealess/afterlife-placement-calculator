@@ -42,8 +42,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 .button {
 
-    background-color: $main-green;
-    background-image: linear-gradient(to top, #499552, #4a9f56, #4aa95a, #4ab45f, #4abe63);
+    background-color: $main-green;        background-image: none;
     border: none;
     border-radius: 3rem;
     color: $white;
@@ -62,7 +61,7 @@ h1, h2, h3, h4, h5, h6, p {
 
     &:hover {
         background-color: #4aa95a;
-        background-image: none;
+        background-image: linear-gradient(to top, #499552, #4a9f56, #4aa95a, #4ab45f, #4abe63);
         color: transparentize($white, 0.1);
 
     }
