@@ -32,11 +32,12 @@ header {
 }
 
 main {
-    border: 3rem solid $main-green;
+    border: 10px solid $main-green;
     padding: 20px;
     position: relative;
 
     @media screen and (min-width: 600px) {
+        border: 3rem solid $main-green;
         padding: 50px;    
     }
 
@@ -85,13 +86,17 @@ main {
 }
 
 .results {
+    @screen and (min-width: 600px) {
+        margin-top: -10px;
+    }
+
     img {
         max-width: 100%;
     }
 }
 
 .scoreboard {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     position: relative;
 
     @media screen and (min-width: 600px) {

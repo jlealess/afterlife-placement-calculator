@@ -28,6 +28,13 @@ const results = {
     
 }
 
+const formReset = function() {
+    const forms = $('form');
+    forms.each(function () {
+        this.reset();
+    })
+}
+
 const updateVerdict = function (status) {
     const $resultMessage = $('#resultMessage');
     const $resultImage = $('#resultImage');
@@ -88,15 +95,9 @@ $(function() {
     // add storedpoints data element to all forms
     $('.form').data('storedpoints', "");
 
-    // hide elements on load
-    $('main').hide();
-    $('.end-quiz').hide();
-    $('.form').hide();
-    $('#intro').hide();
-    $('.next').hide();
-    $('#scoreboard').hide();
-    $('#play').hide();
-    $('.results').hide();
+    // hide elements on load and reset all form elements
+    formReset();
+    $('.hide-on-start').hide();
 
    // event handler for forms with radio input
     $('input[type=radio]').on('change', function() {
@@ -192,5 +193,13 @@ $(function() {
         $('main').toggleClass('has-background');
     })
 
+    $('#reset').on('click', function() {
+        formReset();
+        $('.welcome').show();
+        $('.hide-on-start').hide();
+        $('#currentScore').text('n/a');
+        $('#currentScoreLabel').text('Current score');
+        $('#currentScore').removeClass('good bad');
+    })
   
 })

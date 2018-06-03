@@ -41,8 +41,8 @@
         </div>
         <!-- /wrapper -->
     </header>
-    <main>
-    <section id="intro" class="intro animate fadeIn hideOnLoad">
+    <main class="hide-on-start">
+    <section id="intro" class="intro animate fadeIn hide-on-start">
         <div class="wrapper">
             <div class='embed-container'>
                 <iframe src='https://www.youtube.com/embed/ut0ai4s4mjU' frameborder='0' allowfullscreen></iframe>
@@ -52,17 +52,17 @@
                 universe. It's not the heaven or hell idea that you were raised on. But generally speaking, in the afterlife, there's a Good
                 Place and there's a Bad Place. Let's find out where you should be.
             </p>
-            <button id="play" class="button button--play">Let’s get started</button>
+            <button id="play" class="button button--play hide-on-start">Let’s get started</button>
         </div>
     </section>
-    <div id="scoreboard" class="scoreboard hideOnLoad">
+    <div id="scoreboard" class="scoreboard hide-on-start">
         <div class="wrapper">
             <p class="current-score"><span id="currentScoreLabel" class="current-score__label">Current score</span>
                 <span id="currentScore" class="current-score__value">n/a</span>
             </p>
         </div>
     </div>
-    <form action="" method="POST" id="mainForm" class="form hideOnLoad">
+    <form action="" method="POST" id="mainForm" class="form hide-on-start">
         <div class="wrapper">
             <p class="question">Have you ever denied the existence of climate change?</p>
             <div class="answer answer__2">
@@ -75,10 +75,10 @@
                     <label for="q0No">No</label>
                 </div>
             </div>
-            <input type="submit" class="next button" value="Next question" />
+            <input type="submit" class="next button hide-on-start" value="Next question" />
         </div>
     </form>
-    <form action="" method="POST" id="form3" class="form form__checkbox hideOnLoad">
+    <form action="" method="POST" id="form3" class="form form__checkbox hide-on-start">
         <div class="wrapper">
             <p class="question">Have you ever committed any of the following acts:
                 <span>(check all that apply)</span>
@@ -117,10 +117,10 @@
                     <i class="far fa-circle"></i>Carefully put a spider outside
                 </label>
             </div>
-            <input type="submit" class="next button" value="Next question" />
+            <input type="submit" class="next button hide-on-start" value="Next question" />
         </div>
     </form>
-    <form action="" method="POST" id="form2" class="form form__radio hideOnLoad">
+    <form action="" method="POST" id="form2" class="form form__radio hide-on-start">
         <div class="wrapper">
             <p class="question">Have you ended slavery?</p>
             <div class="answer answer__2">
@@ -133,10 +133,10 @@
                     <label for="q2No">No</label>
                 </div>
             </div>
-            <input type="submit" class="next button" value="Next question" />
+            <input type="submit" class="next button hide-on-start" value="Next question" />
         </div>
     </form>
-    <form action="" method="POST" id="form4" class="form form__radio form__parent hideOnLoad">
+    <form action="" method="POST" id="form4" class="form form__radio form__parent hide-on-start">
         <div class="wrapper">
             <p class="question">Have you ever committed murder?</p>
             <div class="answer answer__2">
@@ -149,10 +149,10 @@
                     <label for="q4No">No</label>
                 </div>
             </div>
-            <input type="submit" class="next button" value="Next question" />
+            <input type="submit" class="next button hide-on-start" value="Next question" />
         </div>
     </form>
-    <form action="" method="POST" id="form4a" class="form form__child hideOnLoad">
+    <form action="" method="POST" id="form4a" class="form form__child hide-on-start">
         <div class="wrapper">
             <p class="question">Did you:</p>
             <div class="answer answer__3">
@@ -169,10 +169,10 @@
                     <label for="q4aGenocide">Commit mass genocide</label>
                 </div>
             </div>
-            <input type="submit" class="next button" value="Next question" />
+            <input type="submit" class="next button hide-on-start" value="Next question" />
         </div>
     </form>
-    <form action="" method="POST" id="form5" class="form form__checkbox hideOnLoad">
+    <form action="" method="POST" id="form5" class="form form__checkbox hide-on-start">
         <div class="wrapper">
             <p class="question">Have you ever: <span>
                  (check all that apply)
@@ -199,10 +199,10 @@
                     <i class="far fa-circle"></i>Used “Facebook” as a verb
                 </label>
             </div>
-            <input type="submit" class="next button" value="Next question" />
+            <input type="submit" class="next button hide-on-start" value="Next question" />
         </div>
     </form>
-    <form action="" method="POST" id="form1" class="form form__radio form__parent hideOnLoad">
+    <form action="" method="POST" id="form1" class="form form__radio form__parent hide-on-start">
         <div class="wrapper">
             <p class="question">Are you vegan?</p>
             <div class="answer answer__2">
@@ -215,10 +215,10 @@
                     <label for="q1No">No</label>
                 </div>
             </div>
-            <input type="submit" class="end-quiz button" value="Calculate result" />
+            <input type="submit" class="end-quiz button hide-on-start" value="Calculate result" />
         </div>
     </form>
-    <form action="" method="POST" id="form1a" class="form form__radio form__child hideOnLoad">
+    <form action="" method="POST" id="form1a" class="form form__radio form__child hide-on-start">
         <div class="wrapper">
             <p class="question">Have you ever discussed veganism unprompted?</p>
             <div class="answer answer__2">
@@ -234,11 +234,12 @@
             <input type="submit" class="end-quiz button" value="Calculate result" />
         </div>
     </form>
-    <section class="results hideOnLoad">
+    <section class="results hide-on-start">
         <div class="wrapper">
             <div id="resultImage" class="result"></div>
             <div id="resultHeadline" class="result"></div>
             <div id="resultMessage" class="result"></div>
+            <button id="reset" class="button">Try again</button>
             <div id="tweeter">
                 <a class="twitter-share-button" target="_blank" href='https://twitter.com/intent/tweet?text=Try the Afterlife Placement Calculator'>
                 <i class="fab fa-twitter" title="Tweet your results"></i></a>
